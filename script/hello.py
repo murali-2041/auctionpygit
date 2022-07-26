@@ -16,7 +16,7 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file):
         print(host_name)
         print("Connecting to ssh using hostname " + host_name)
         try:
-            ssh.connect(hostname=host_name, username='ec2-user', pkey=pem_file)
+            ssh.connect(hostname=host_name, username='ec2-user', pkey=privkey)
         except paramiko.AuthenticationException:
             print("Authentication failed when connecting to" + ip)
             continue
