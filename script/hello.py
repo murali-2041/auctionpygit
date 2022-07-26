@@ -4,7 +4,6 @@ import sys
 import json
 
 def sudo_user_access(users_file_path,hosts_file_path,pem_file)
-    exitCode = 0
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     with open(users_file_path) as f:
@@ -16,7 +15,7 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file)
         host_name = host_name.replace("\n","")
         print("Connecting to ssh using hostname " + host_name)
         try:
-            ssh.connect(hostname=host_name, username='cloudbreak', pkey=pem_file)
+            ssh.connect(hostname=host_name, username='ec2-user', pkey=pem_file)
         except paramiko.AuthenticationException:
             print("Authentication failed when connecting to" + ip)
             continue
