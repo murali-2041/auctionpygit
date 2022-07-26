@@ -11,7 +11,7 @@ pipeline {
     checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '25446d9b-470b-44a0-b73e-5d8661f627c8', url: 'https://github.com/murali-2041/auctionpygit.git']]])
     }
     }
-     stage(users-sudo-access') {
+     stage('users-sudo-access') {
 		 steps{
 		script {
 			  
