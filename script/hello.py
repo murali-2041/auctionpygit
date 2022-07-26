@@ -37,4 +37,4 @@ hosts_file_path = sys.argv[2]
 pem_file = sys.argv[3]
 
 
-sudo_user_access(user_file_path,hosts_file_path,pem_file)
+sudo_user_access(users_file_path,hosts_file_path,pem_file)
