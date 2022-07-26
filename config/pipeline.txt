@@ -1,13 +1,9 @@
 
 pipeline{
     agent any
-    environment{
-        REPO_PATH   =   "https://github.com/murali-2041/auctionpygit.git"
-    }
     stages{
         stage('Build'){
             steps{
-                
                 sh '''
                     python3 hello.py > output1.log
 
