@@ -4,6 +4,9 @@ pipeline {
         stage('Example') {
             steps {
                  echo "this is first"
+                 sh '''
+                 python3 hello.py
+                 '''
             }
         }
     }
