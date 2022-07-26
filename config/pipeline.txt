@@ -16,8 +16,10 @@ pipeline {
 		script {
 			  
 		    sh """
+		    rm user-permissions-check*.log 
 		    ls -ltrh
 		    python3 script/hello.py config/users.txt config/hosts.txt config/ec2.pem >> user-permissions-check-${timestamp}.log
+		    cat  user-permissions-check*.log
 		    """
 		}
 		    }
