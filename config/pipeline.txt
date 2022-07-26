@@ -24,7 +24,7 @@ pipeline {
 		script {
 			  
 		    sh '''
-		    python3 script/hello.py config/users.txt config/hosts.txt ${CLONED_PATH}/arch-dev-ssh.pem >> user-permissions-check-${timestamp}.log
+		    python3 script/hello.py config/users.txt config/hosts.txt config/ec2.pem >> user-permissions-check-${timestamp}.log
 		    '''
 		}
 		    }
