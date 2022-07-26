@@ -14,7 +14,7 @@ pipeline {
         steps {
                  echo "this is first"
                  sh '''
-                 python3 config/hello.py
+                 python3 script/hello.py
                  '''
          }
      }
