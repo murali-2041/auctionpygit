@@ -11,7 +11,7 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file):
     with open(hosts_file_path) as f:
         hosts = f.readlines()
     privkey = paramiko.RSAKey.from_private_key_file(pem_file)
-    for host_name in hosts_file_path:
+    for host_name in hosts:
         host_name = host_name.replace("\n","")
         print(host_name)
         print("Connecting to ssh using hostname " + host_name)
@@ -21,7 +21,7 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file):
             print("Authentication failed when connecting to" + ip)
             continue
         print("Successfully connected to ssh using hostname "+host_name)
-        for user_name in users_file_path:
+        for user_name in users:
             user_name = user_name.replace("\n","")
             stdin, stdout, stderr = ssh.exec_command("sudo usermod –aG wheel "+user_name)
             print("successfully given root permission for "+user_name)
