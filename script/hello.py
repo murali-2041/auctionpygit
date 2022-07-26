@@ -11,22 +11,25 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file):
     with open(hosts_file_path) as f:
         hosts = f.readlines()
     privkey = paramiko.RSAKey.from_private_key_file(pem_file)
-    for host_name in hosts:
-        host_name = host_name.replace("\n","")
-        print(host_name)
-        print("Connecting to ssh using hostname " + host_name)
-        try:
-            ssh.connect(hostname=host_name, username='ec2-user', pkey=privkey)
-        except paramiko.AuthenticationException:
-            print("Authentication failed when connecting to" + ip)
-            continue
-        print("Successfully connected to ssh using hostname "+host_name)
-        for user_name in users:
-            user_name = user_name.replace("\n","")
-            stdin, stdout, stderr = ssh.exec_command("sudo usermod –aG wheel "+user_name)
-            print("successfully given root permission for "+user_name)
-        ssh.exec_command("exit")
-        print("Disconnected from ssh connection with hostname "+host_name)
+    print(users)
+    print(hosts)
+    print(privkey)
+#     for host_name in hosts:
+#         host_name = host_name.replace("\n","")
+#         print(host_name)
+#         print("Connecting to ssh using hostname " + host_name)
+#         try:
+#             ssh.connect(hostname=host_name, username='ec2-user', pkey=privkey)
+#         except paramiko.AuthenticationException:
+#             print("Authentication failed when connecting to" + ip)
+#             continue
+#         print("Successfully connected to ssh using hostname "+host_name)
+#         for user_name in users:
+#             user_name = user_name.replace("\n","")
+#             stdin, stdout, stderr = ssh.exec_command("sudo usermod –aG wheel "+user_name)
+#             print("successfully given root permission for "+user_name)
+#         ssh.exec_command("exit")
+#         print("Disconnected from ssh connection with hostname "+host_name)
     #ssh.exec_command("logout")
     
 if( len(sys.argv) != 4):
