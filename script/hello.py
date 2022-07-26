@@ -30,10 +30,10 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file):
             user_name = user_name.replace("\n","")
             print(user_name)
             stdin, stdout, stderr = ssh.exec_command("whoami")
-            print(stdin.read().decode())
+          
             print(stdout.read().decode())
             stdin, stdout, stderr = ssh.exec_command("sudo usermod –aG wheel "+user_name)
-            print(stdin.read().decode())
+           
             print(stdout.read().decode())
             print("successfully given root permission for "+user_name)
         ssh.exec_command("exit")
