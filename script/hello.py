@@ -6,6 +6,8 @@ import json
 def sudo_user_access(users_file_path,hosts_file_path,pem_file):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    print(users_file_path)
+    print(hosts_file_path)
     with open(users_file_path) as f:
         users = f.readlines()
     with open(hosts_file_path) as f:
