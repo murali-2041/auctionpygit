@@ -1,16 +1,11 @@
-pipeline{
-    agent {
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                 echo "this is first"
+            }
+        }
     }
-    stages{
-        stage('Build'){
-            steps{
-                sh '''
-                python3 hello.py > output1.log
-
-                '''
-                archiveArtifacts artifacts: "output1.log"
-            }
-        }
-    }
 }
 
