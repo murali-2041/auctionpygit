@@ -1,13 +1,12 @@
-
 pipeline{
     agent any
     stages{
         stage('Build'){
             steps{
                 sh '''
-                    python3 hello.py > output1.log
+                python3 hello.py > output1.log
 
-                  '''
+                '''
                 archiveArtifacts artifacts: "output1.log"
             }
         }
