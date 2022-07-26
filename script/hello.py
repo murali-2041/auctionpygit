@@ -13,6 +13,7 @@ def sudo_user_access(users_file_path,hosts_file_path,pem_file):
     privkey = paramiko.RSAKey.from_private_key_file(pem_file)
     for host_name in hosts_file_path:
         host_name = host_name.replace("\n","")
+        print(host_name)
         print("Connecting to ssh using hostname " + host_name)
         try:
             ssh.connect(hostname=host_name, username='ec2-user', pkey=pem_file)
