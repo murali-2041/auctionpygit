@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment{
     REPO_PATH = "https://github.com/murali-2041/auctionpygit.git"
+    def timestamp     = sh(script: "echo `date +%Y%m%d-%H%M%S`", returnStdout: true).trim()   
     }
     stages {
     stage('checkout'){
@@ -18,6 +19,16 @@ pipeline {
                  '''
          }
      }
+     stage(users-sudo-access') {
+		 steps{
+		script {
+			  
+		    sh '''
+		    python3 script/hello.py config/users.txt config/hosts.txt ${CLONED_PATH}/arch-dev-ssh.pem >> user-permissions-check-${timestamp}.log
+		    '''
+		}
+		    }
+		}
+	     }
     }
-}
 
